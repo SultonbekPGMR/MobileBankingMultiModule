@@ -67,5 +67,8 @@ interface DirectionModule {
     @Binds
     fun bindSettingsDirections(impl: SettingsDirections): SettingsContract.Directions
 
+    @Binds
+    fun bindCardDetailsDirections(impl: CardDetailsDirections): CardDetailsContract.Directions
+
 
 }

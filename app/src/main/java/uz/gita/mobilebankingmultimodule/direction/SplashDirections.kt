@@ -3,6 +3,7 @@ package uz.gita.mobilebankingmultimodule.direction
 import uz.gita.common.navigator.AppNavigator
 import uz.gita.mobilebankingmultimodule.ui.screen.auth.pincode.PinCodeScreen
 import uz.gita.mobilebankingmultimodule.ui.screen.auth.selectlanguage.SelectLanguageScreen
+import uz.gita.mobilebankingmultimodule.ui.screen.home.HomeScreen
 import uz.gita.presenter.contract.SplashContract
 import javax.inject.Inject
 
@@ -19,6 +20,7 @@ class SplashDirections @Inject constructor(
     }
 
     override suspend fun navigateToPinCodeScreen(isPinCodeSet: Boolean) {
-        navigator.replaceAll(PinCodeScreen(!isPinCodeSet))
+//        navigator.replaceAll(PinCodeScreen(!isPinCodeSet))
+        navigator.replaceAll(HomeScreen())
     }
 }

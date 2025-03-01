@@ -35,6 +35,12 @@ interface ViewModelModule {
     fun bindPinCodeViewModel(impl: PinCodeViewModel.Factory): ScreenModelFactory
 
 
+    @Binds
+    @IntoMap
+    @ScreenModelFactoryKey(CardDetailsViewModel.Factory::class)
+    fun bindCardDetailsViewModel(impl: CardDetailsViewModel.Factory): ScreenModelFactory
+
+
     @[Binds IntoMap ScreenModelKey(SplashVIewModel::class)]
     fun bindSplashVIewModel(impl: SplashVIewModel): ScreenModel
 

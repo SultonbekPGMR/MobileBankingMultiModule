@@ -2,16 +2,16 @@ package uz.gita.mobilebankingmultimodule.ui.screen.auth.splash
 
 import android.util.Log
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.hilt.getScreenModel
 import com.airbnb.lottie.compose.LottieAnimation
@@ -20,6 +20,7 @@ import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import kotlinx.coroutines.delay
 import uz.gita.mobilebankingmultimodule.ui.theme.backgroundGradient
+import uz.gita.mobilebankingmultimodule.util.paddingNegative
 import uz.gita.presenter.contract.SplashContract.Intent.Navigate
 import uz.gita.presenter.viewmodel.SplashVIewModel
 
@@ -50,7 +51,7 @@ class SplashScreen : Screen {
     @Composable
     fun SplashScreenContent(navigate: () -> Unit = {}) {
         LaunchedEffect(Unit) {
-            delay(10)
+            delay(1)
             Log.d("Splash", "SplashScreenContent: ")
             navigate()
         }
@@ -79,7 +80,11 @@ class SplashScreen : Screen {
             LottieAnimation(
                 composition = composition,
                 progress = { progress.progress },
-                modifier = Modifier.wrapContentSize(),
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .fillMaxWidth()
+                    .aspectRatio(0.5f)
+                    .paddingNegative(horizontal = 16.dp),
                 alignment = Alignment.BottomCenter
             )
         }

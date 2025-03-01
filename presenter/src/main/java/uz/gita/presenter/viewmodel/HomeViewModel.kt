@@ -66,6 +66,12 @@ class HomeViewModel @Inject constructor(
 
             }
 
+            is OnCardClick -> {
+                screenModelScope.launch {
+                    directions.navigateToCardDetailsScreen(intent.cardData)
+                }
+            }
+
             is OnNotificationClick -> {}
             is OnSupportClick -> {}
             OnAddCardClick -> {

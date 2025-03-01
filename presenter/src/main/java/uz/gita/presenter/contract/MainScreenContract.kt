@@ -19,7 +19,7 @@ interface MainScreenContract {
 
 
     enum class BottomNavItem(val iconId:Int, val selectedItemIconId:Int, val labelId: Int) {
-        Home(R.drawable.ic_rocket, R.drawable.ic_rocket_selected, R.string.lbl_home),
+        Home(R.drawable.ic_home, R.drawable.ic_home_green, R.string.lbl_home),
         Transfers(R.drawable.ic_transfer,R.drawable.ic_transfer_selected, R.string.lbl_transfers),
         Payments(R.drawable.ic_payment,R.drawable.ic_payment_selected, R.string.lbl_payments),
         Monitoring(R.drawable.ic_monitoring,R.drawable.ic_monitoring_selected, R.string.monitoring),

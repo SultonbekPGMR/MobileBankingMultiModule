@@ -38,6 +38,7 @@ interface HomeScreenContract {
         data object OnRefresh : Intent
         data class OnServiceClicked(val service: MainServiceData): Intent
         data class OnSupportClick(val number: Int) : Intent
+        data class OnCardClick(val cardData: CardData) : Intent
         data class OnNotificationClick(val newState: Boolean) : Intent
     }
 
@@ -46,6 +47,7 @@ interface HomeScreenContract {
         suspend fun navigateToMoneyTransferScreen()
         suspend fun navigateToAddCardScreen()
         suspend fun navigateToUserDetailsScreen()
+        suspend fun navigateToCardDetailsScreen(cardData: CardData)
 
     }
 

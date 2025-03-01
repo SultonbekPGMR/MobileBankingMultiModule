@@ -7,12 +7,12 @@ import uz.gita.presenter.R
 
 internal object AppConst {
     val mainMoneyServices: List<MainServiceData> = listOf(
-        MainServiceData(nameId = R.string.lbl_my_pension, iconId = R.drawable.ic_rocket_selected),
-        MainServiceData(nameId = R.string.lbl_inps, iconId = R.drawable.ic_rocket_selected),
-        MainServiceData(nameId = R.string.lbl_my_bank, iconId = R.drawable.ic_rocket_selected),
-        MainServiceData(nameId = R.string.lbl_transfers, iconId = R.drawable.ic_rocket_selected),
-        MainServiceData(nameId = R.string.lbl_my_home, iconId = R.drawable.ic_rocket_selected),
-        MainServiceData(nameId = R.string.my_number, iconId = R.drawable.ic_rocket_selected),
+        MainServiceData(nameId = R.string.lbl_my_pension, iconId = R.drawable.ic_coin_font),
+        MainServiceData(nameId = R.string.lbl_inps, iconId = R.drawable.ic_news),
+        MainServiceData(nameId = R.string.lbl_my_bank, iconId = R.drawable.ic_building_bank),
+        MainServiceData(nameId = R.string.lbl_transfers, iconId = R.drawable.ic_cash_svg),
+        MainServiceData(nameId = R.string.lbl_my_home, iconId = R.drawable.ic_home_green),
+        MainServiceData(nameId = R.string.my_number, iconId = R.drawable.ic_phone_call),
     )
     val userDetailsScreenOptionsList = listOf(
         OptionSettings(iconId = R.drawable.ic_rocket_selected,titleId = R.string.lbl_settings),

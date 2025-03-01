@@ -1,7 +1,10 @@
 package uz.gita.mobilebankingmultimodule.ui.screen.home
 
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.*
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -23,8 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.graphics.Color.Companion
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.PlatformTextStyle
@@ -41,12 +43,9 @@ import uz.gita.mobilebankingmultimodule.R
 import uz.gita.mobilebankingmultimodule.ui.components.card.AppCard
 import uz.gita.mobilebankingmultimodule.ui.components.card.BannerCard
 import uz.gita.mobilebankingmultimodule.ui.theme.*
-import uz.gita.presenter.contract.HomeScreenContract
 import uz.gita.presenter.contract.HomeScreenContract.*
-import uz.gita.presenter.contract.HomeScreenContract.Intent.OnAddCardClick
-import uz.gita.presenter.contract.HomeScreenContract.Intent.OnRefresh
+import uz.gita.presenter.contract.HomeScreenContract.Intent.*
 import uz.gita.presenter.viewmodel.HomeViewModel
-import kotlin.math.absoluteValue
 
 
 /**
@@ -132,7 +131,7 @@ class HomeScreen : Screen {
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     Text(
-                                        text = if (balanceVisibility)formatBalance(uiState.value.totalBalance) else "•••••",
+                                        text = if (balanceVisibility) formatBalance(uiState.value.totalBalance) else "•••••",
                                         fontSize = 28.sp,
                                         fontWeight = FontWeight.Bold,
                                         color = Color.White
@@ -267,7 +266,9 @@ class HomeScreen : Screen {
                                 verticalAlignment = Alignment.CenterVertically,
                             ) {
                                 items(items = uiState.value.userCardsList) {
-                                    AppCard(cardData = it) {}
+                                    AppCard(cardData = it) {
+                                        eventDispatcher(OnCardClick(it))
+                                    }
                                 }
                                 item {
                                     Box(
@@ -328,10 +329,9 @@ class HomeScreen : Screen {
                                     pagerSnapDistance = PagerSnapDistance.atMost(0)
                                 )
                             ) { page ->
-                                // Wrap the page index using modulus to cycle through the original list
                                 val resolvedPageContentIndex = page % originalPageCount
-                                val banner = uiState.value.suggestedActionsList[resolvedPageContentIndex] // Get the correct banner for this index
-
+                                val banner =
+                                    uiState.value.suggestedActionsList[resolvedPageContentIndex]
                                 Card(
                                     Modifier
                                         .clip(shape = RoundedCornerShape(17.8.dp))
@@ -339,7 +339,7 @@ class HomeScreen : Screen {
                                         .fillMaxWidth()
                                         .height(90.dp)
                                         .border(border = BorderStroke(1.dp, lightGreen))
-                                        ) {
+                                ) {
                                     BannerCard(
                                         bannerData = banner
                                     ) {}
@@ -523,7 +523,7 @@ class HomeScreen : Screen {
             navigationIcon = {
                 IconButton(onClick = { }) {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_payment_selected),
+                        painter = painterResource(id = R.drawable.ic_logo_xazna),
                         contentDescription = "Menu Icon",
                         tint = Color.White
 
@@ -531,22 +531,25 @@ class HomeScreen : Screen {
                 }
             },
             actions = {
-                IconButton(onClick = {  }) {
+                IconButton(onClick = { }) {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_transfer_selected),
-                        contentDescription = "Search"
+                        painter = painterResource(id = R.drawable.ic_payment_search),
+                        contentDescription = "Search",
+                        tint = Color.White
                     )
                 }
                 IconButton(onClick = { }) {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_monitoring_selected),
-                        contentDescription = "Message"
+                        painter = painterResource(id = R.drawable.ic_messenger),
+                        contentDescription = "Message",
+                        tint = Companion.White
                     )
                 }
                 IconButton(onClick = {}) {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_more_selected),
-                        contentDescription = "Notifications"
+                        painter = painterResource(id = R.drawable.ic_notification),
+                        contentDescription = "Notifications",
+                        tint = Companion.White
                     )
                 }
             },

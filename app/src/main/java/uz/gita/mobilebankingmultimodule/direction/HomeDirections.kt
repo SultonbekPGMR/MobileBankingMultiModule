@@ -1,7 +1,9 @@
 package uz.gita.mobilebankingmultimodule.direction
 
+import uz.gita.common.model.CardData
 import uz.gita.common.navigator.AppNavigator
 import uz.gita.mobilebankingmultimodule.ui.screen.addcard.AddCardScreen
+import uz.gita.mobilebankingmultimodule.ui.screen.carddetails.CardDetailsScreen
 import uz.gita.mobilebankingmultimodule.ui.screen.moneytransfer.TransferMoneyScreen
 import uz.gita.mobilebankingmultimodule.ui.screen.userdetails.UserDetailsScreen
 import uz.gita.presenter.contract.HomeScreenContract
@@ -25,4 +27,9 @@ class HomeDirections @Inject constructor(
     override suspend fun navigateToUserDetailsScreen() {
         navigator.navigateTo(UserDetailsScreen())
     }
+
+    override suspend fun navigateToCardDetailsScreen(cardData: CardData) {
+        navigator.navigateTo(CardDetailsScreen(cardData))
+    }
+
 }
